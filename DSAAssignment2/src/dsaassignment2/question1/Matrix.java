@@ -6,23 +6,19 @@ package dsaassignment2.question1;
  */
 public class Matrix {
     private final int[][] values;
-    private final int width;
-    private final int height;
+    private final int size;
     
-    public Matrix(int h, int w) {
-        if (h != w) 
-            throw new IllegalArgumentException("Width and height must be equal");
-        this.values = new int[h][w];
-        this.width = w;
-        this.height = h;
+    public Matrix(int size) {
+        this.values = new int[size][size];
+        this.size = size;
     }
     
     public Matrix(int[][] values) {
-        this.values = values;
-        this.height = values.length;
-        this.width = values[0].length;
-        if (this.height != this.width) 
+        if (values.length != values[0].length)
             throw new IllegalArgumentException("Width and height must be equal");
+
+        this.values = values;
+        this.size = values.length;
     }
     
     public static Matrix defaultMatrix() {
@@ -40,5 +36,9 @@ public class Matrix {
     
     public int get(int y, int x) {
         return this.values[y][x];
+    }
+    
+    public int getSize() {
+        return this.size;
     }
 }

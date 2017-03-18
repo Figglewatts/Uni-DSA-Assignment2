@@ -5,7 +5,19 @@ package dsaassignment2.question1;
  */
 public class Question1Main {
     public static void main (String[] args) {
-
+        testAlgorithms(new int[] { 4, 12, 110, 5, 6, 111 } );
+    }
+    
+    public static void testAlgorithms(int[] values) {
+        Matrix m = Matrix.defaultMatrix();
+        for (int i : values) {
+            String dResult = String.valueOf(findElementD(m, m.getSize(), i));
+            String d1Result = String.valueOf(findElementD1(m, m.getSize(), i));
+            String d2Result = String.valueOf(findElementD2(m, m.getSize(), i));
+            
+            System.out.printf("VALUE %d:\nd: %s\nd1: %s\nd2: %s\n\n", i, 
+                dResult, d1Result, d2Result);
+        }
     }
     
     public static boolean findElementD(Matrix a, int n, int p) {
@@ -26,7 +38,7 @@ public class Question1Main {
     
     public static boolean findElementD2(Matrix a, int n, int p) {
         int row = 0;
-        int col = n;
+        int col = n - 1;
         while (row < n && col > 0) {
             int elem = a.get(row, col);
             
@@ -43,11 +55,12 @@ public class Question1Main {
         int min = 0;
         int max = n-1;
         while (found == false && i < n) {
-            int guess = a.get(rowNum, (min + max) / 2);
+            int guessIndex = (min + max) / 2;
+            int guess = a.get(rowNum, guessIndex);
             
             if (guess == p) found = true;
-            else if (guess < p) min = guess + 1;
-            else max = guess - 1;
+            else if (guess < p) min = guessIndex + 1;
+            else max = guessIndex - 1;
             i++;
         }
         return found;
