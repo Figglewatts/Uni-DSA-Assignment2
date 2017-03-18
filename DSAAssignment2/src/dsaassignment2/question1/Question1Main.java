@@ -18,6 +18,7 @@ public class Question1Main {
             System.out.printf("VALUE %d:\nd: %s\nd1: %s\nd2: %s\n\n", i, 
                 dResult, d1Result, d2Result);
         }
+        System.out.println(m);
     }
     
     public static boolean findElementD(Matrix a, int n, int p) {

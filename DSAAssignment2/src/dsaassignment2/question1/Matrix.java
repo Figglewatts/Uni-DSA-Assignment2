@@ -1,5 +1,7 @@
 package dsaassignment2.question1;
 
+import java.util.Random;
+
 /**
  *
  * @author Sam Gibson (100115871) <sam.gibson@uea.ac.uk>
@@ -34,11 +36,60 @@ public class Matrix {
         return new Matrix(values);
     }
     
+    public static Matrix worstCaseD(int p, int n) {
+        if (p < 1) throw new IllegalArgumentException("p must be >= 1");
+        
+        Random rand = new Random();
+        int[][] values = new int[n][n];
+        
+        for (int j = 0; j < n; j++)
+            for (int i = 0; i < n; i++)
+                values[j][i] = rand.nextInt(p);
+        
+        return new Matrix(values);
+    }
+    
+    public static Matrix worstCaseD1(int p, int n) {
+        if (p < 1) throw new IllegalArgumentException("p must be >= 1");
+
+        int[][] values = new int[n][n];
+        
+        for (int j = 0; j < n; j++)
+            for (int i = 0; i < n; i++)
+                values[j][i] = 0;
+                
+        return new Matrix(values);
+    }
+    
+    public static Matrix worseCaseD2(int p, int n) {
+        int[][] values = new int[n][n];
+        
+        for (int j = 0; j < n; j++) {
+            for (int i = 0; i < n; i++) {
+                if (j == n-1) values[j][i] = j+i+1;
+                else values[j][i] = j+i;
+            }
+        }
+        return new Matrix(values);
+    }
+    
     public int get(int y, int x) {
         return this.values[y][x];
     }
     
     public int getSize() {
         return this.size;
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int r = 0; r < this.size; r++) {
+            for (int c = 0; c < this.size; c++) {
+                sb.append(String.format("%5d", this.get(r, c)));
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }
