@@ -66,7 +66,7 @@ public class Matrix {
         
         for (int j = 0; j < n; j++) {
             for (int i = 0; i < n; i++) {
-                if (j == n-1) values[j][i] = j+i+1;
+                if (j == n-1) values[j][i] = j+i+p;
                 else values[j][i] = j+i;
             }
         }

@@ -18,7 +18,9 @@ public class Question1Main {
             System.out.printf("VALUE %d:\nd: %s\nd1: %s\nd2: %s\n\n", i, 
                 dResult, d1Result, d2Result);
         }
-        System.out.println(m);
+        Matrix wcd = Matrix.worstCaseD(30, 7);
+        Matrix wcd1 = Matrix.worstCaseD1(30, 7);
+        Matrix wcd2 = Matrix.worseCaseD2(30, 7);
     }
     
     public static boolean findElementD(Matrix a, int n, int p) {
