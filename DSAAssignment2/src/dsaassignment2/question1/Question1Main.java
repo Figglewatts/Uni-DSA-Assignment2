@@ -11,16 +11,13 @@ public class Question1Main {
     public static void testAlgorithms(int[] values) {
         Matrix m = Matrix.defaultMatrix();
         for (int i : values) {
-            String dResult = String.valueOf(findElementD(m, m.getSize(), i));
-            String d1Result = String.valueOf(findElementD1(m, m.getSize(), i));
-            String d2Result = String.valueOf(findElementD2(m, m.getSize(), i));
+            boolean dResult = findElementD(m, m.getSize(), i);
+            boolean d1Result = findElementD1(m, m.getSize(), i);
+            boolean d2Result = findElementD2(m, m.getSize(), i);
             
-            System.out.printf("VALUE %d:\nd: %s\nd1: %s\nd2: %s\n\n", i, 
+            System.out.printf("VALUE %d:\nd: %b\nd1: %b\nd2: %b\n\n", i, 
                 dResult, d1Result, d2Result);
         }
-        Matrix wcd = Matrix.worstCaseD(30, 7);
-        Matrix wcd1 = Matrix.worstCaseD1(30, 7);
-        Matrix wcd2 = Matrix.worseCaseD2(30, 7);
     }
     
     public static boolean findElementD(Matrix a, int n, int p) {
