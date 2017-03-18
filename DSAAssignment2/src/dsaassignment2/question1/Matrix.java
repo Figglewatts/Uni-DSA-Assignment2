@@ -10,6 +10,8 @@ public class Matrix {
     private final int height;
     
     public Matrix(int h, int w) {
+        if (h != w) 
+            throw new IllegalArgumentException("Width and height must be equal");
         this.values = new int[h][w];
         this.width = w;
         this.height = h;
@@ -19,6 +21,8 @@ public class Matrix {
         this.values = values;
         this.height = values.length;
         this.width = values[0].length;
+        if (this.height != this.width) 
+            throw new IllegalArgumentException("Width and height must be equal");
     }
     
     public static Matrix defaultMatrix() {
