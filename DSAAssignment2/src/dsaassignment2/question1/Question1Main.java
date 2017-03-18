@@ -103,7 +103,7 @@ public class Question1Main {
         double stdDev = Math.sqrt(variance);
         double stdErr = stdDev / reps;
 
-        return new SearchTestPlot(mean, variance, stdDev, stdErr);
+        return new SearchTestPlot(n, mean, variance, stdDev, stdErr);
     }
     
     private static void writeToCSV(String name, 
@@ -112,9 +112,11 @@ public class Question1Main {
             PrintWriter pw = new PrintWriter(new File(name + ".csv"));
             
             StringBuilder sb = new StringBuilder();
-            sb.append("mean, variance, stdDev, stdErr\n");
+            sb.append("size, mean, variance, stdDev, stdErr\n");
 
             for (SearchTestPlot plot : plots) {
+                sb.append(plot.getSize());
+                sb.append(", ");
                 sb.append(plot.getMean());
                 sb.append(", ");
                 sb.append(plot.getVariance());
