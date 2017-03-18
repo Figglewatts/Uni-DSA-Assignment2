@@ -61,7 +61,7 @@ public class Matrix {
         return new Matrix(values);
     }
     
-    public static Matrix worseCaseD2(int p, int n) {
+    public static Matrix worstCaseD2(int p, int n) {
         int[][] values = new int[n][n];
         
         for (int j = 0; j < n; j++) {

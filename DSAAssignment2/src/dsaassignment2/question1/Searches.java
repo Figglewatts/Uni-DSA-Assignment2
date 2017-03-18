@@ -5,11 +5,17 @@ package dsaassignment2.question1;
  * @author Sam Gibson (100115871) <sam.gibson@uea.ac.uk>
  */
 public class Searches {
-    public interface Search {
-        public boolean search(Matrix a, int n, int p);
+    public abstract class Search {
+        public final String name;
+        public Search(String name) {
+            this.name = name;
+        }
+        public abstract boolean search(Matrix a, int n, int p);
     }
 
-    static class DSearch implements Search {
+    static class DSearch extends Search {
+        public DSearch(String name) { super(name); }
+        
         @Override
         public boolean search(Matrix a, int n, int p) {
             for (int i = 0; i < n; i++) {
@@ -23,7 +29,9 @@ public class Searches {
         }
     }
     
-    static class D1Search implements Search {
+    static class D1Search extends Search {
+        public D1Search(String name) { super(name); }
+        
         @Override
         public boolean search(Matrix a, int n, int p) {
             for (int i = 0; i < n; i++) {
@@ -35,7 +43,9 @@ public class Searches {
         }
     }
     
-    static class D2Search implements Search {
+    static class D2Search extends Search {
+        public D2Search(String name) { super(name); }
+        
         @Override
         public boolean search(Matrix a, int n, int p) {
             int row = 0;
