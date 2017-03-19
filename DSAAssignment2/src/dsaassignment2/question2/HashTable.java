@@ -9,10 +9,14 @@ package dsaassignment2.question2;
  *
  * @author ajb
  */
-public abstract class HashTable {
+public abstract class HashTable<T extends Object> {
 
-    int capacity = 100;
-    int size = 0;
+    int capacity;
+    int size;
+    
+    public HashTable(int capacity) {
+        this.capacity = capacity;
+    }
 
     public int size() {
         return size;
@@ -25,20 +29,20 @@ public abstract class HashTable {
      * @param obj
      * @return true if the element is successfully added
      */
-    abstract boolean add(Object obj);
+    public abstract boolean add(T obj);
 
     /**
      *
      * @param obj
      * @return true if this hash table contains the specified element
      */
-    abstract boolean contains(Object obj);
+    public abstract boolean contains(T obj);
 
     /**
      *
      * @param obj
      * @return Removes the specified element from this set if it is present
      */
-    abstract boolean remove(Object obj);
+    public abstract boolean remove(T obj);
 
 }
