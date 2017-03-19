@@ -11,8 +11,8 @@ package dsaassignment2.question2;
  */
 public abstract class HashTable<T extends Object> {
 
-    int capacity;
-    int size;
+    protected int capacity;
+    protected int size;
     
     public HashTable(int capacity) {
         this.capacity = capacity;
