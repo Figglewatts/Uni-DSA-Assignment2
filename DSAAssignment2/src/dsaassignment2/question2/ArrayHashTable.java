@@ -10,7 +10,7 @@ public class ArrayHashTable<T extends Object> extends HashTable<T> {
     private final static int DEFAULT_CAPACITY = 10;
     
     private Object[][] table;
-    private int chainSize = 5;
+    private final int chainSize = 5;
     private int[] counts;
     
     public ArrayHashTable() {
@@ -55,7 +55,11 @@ public class ArrayHashTable<T extends Object> extends HashTable<T> {
 
     @Override
     public boolean remove(T obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int hash = arrayHash(obj);
+        if (!inBucket(hash, obj)) return false;
+        
+        // we can now be sure the bucket at hash will exist
+        return removeInBucket(hash, obj);
     }
     
     private int arrayHash(T obj) {
@@ -71,6 +75,20 @@ public class ArrayHashTable<T extends Object> extends HashTable<T> {
     private boolean inBucket(int bucket, T obj) {
         for (Object o : table[bucket]) {
             if (o.equals(obj)) return true;
+        }
+        return false;
+    }
+    
+    private boolean removeInBucket(int bucket, T obj) {
+        for (int i = 0; i < counts[bucket]; i++) {
+            if (table[bucket][i].equals(obj)) {
+                System.arraycopy(table[bucket], i + 1, table[bucket], i, 
+                        counts[bucket] - i - 1);
+                table[bucket][counts[bucket] - 1] = null;
+                counts[bucket]--;
+                size--;
+                return true;
+            }
         }
         return false;
     }
