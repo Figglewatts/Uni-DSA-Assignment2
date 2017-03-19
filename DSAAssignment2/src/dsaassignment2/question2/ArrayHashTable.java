@@ -74,7 +74,7 @@ public class ArrayHashTable<T extends Object> extends HashTable<T> {
      */
     private boolean inBucket(int bucket, T obj) {
         for (Object o : table[bucket]) {
-            if (o.equals(obj)) return true;
+            if (o == obj) return true;
         }
         return false;
     }
