@@ -37,7 +37,7 @@ public class ArrayHashTable<T extends Object> extends HashTable<T> {
         }
         else if (inBucket(hash, obj)) return false; // should be O(n)
         
-        if (counts[hash] >= chainSize) {
+        if (counts[hash] >= table[hash].length) {
             // if full, double its capacity
             table[hash] = Arrays.copyOf(table[hash], table[hash].length * 2);
         }
@@ -73,6 +73,7 @@ public class ArrayHashTable<T extends Object> extends HashTable<T> {
      * @return True if present, false otherwise.
      */
     private boolean inBucket(int bucket, T obj) {
+        if (table[bucket] == null) return false;
         for (Object o : table[bucket]) {
             if (o == obj) return true;
         }

@@ -40,7 +40,8 @@ public class Question2Main {
         System.out.println("5: " + testHashTable.size);
         
         System.out.println("In: " + testHashTable.contains(test));
-        System.out.println("Not in: " + testHashTable.contains(notInTable));
+        boolean notInContains = testHashTable.contains(notInTable);
+        System.out.println("Not in: " + notInContains);
         
         boolean removeTrue = testHashTable.remove(test);
         System.out.println("removeTrue: " + removeTrue);
@@ -73,6 +74,8 @@ public class Question2Main {
             ArrayHashTable<Integer> table = new ArrayHashTable<>();
             addPlots.add(hashTableAddCase(randomData, table));
             removePlots.add(hashTableRemoveCase(randomData, table));
+            table = null;
+            System.gc();
         }
         
         writeToCSV("hashTableAdd", addPlots);
